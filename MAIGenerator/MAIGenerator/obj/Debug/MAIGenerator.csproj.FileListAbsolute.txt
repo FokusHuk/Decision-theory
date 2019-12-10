@@ -1,0 +1,7 @@
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\bin\Debug\MAIGenerator.exe.config
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\bin\Debug\MAIGenerator.exe
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\bin\Debug\MAIGenerator.pdb
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\obj\Debug\MAIGenerator.csprojAssemblyReference.cache
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\obj\Debug\MAIGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\obj\Debug\MAIGenerator.exe
+C:\Users\Ilya Axenov\source\repos\MAIGenerator\MAIGenerator\obj\Debug\MAIGenerator.pdb
