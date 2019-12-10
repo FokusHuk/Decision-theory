@@ -1,0 +1,7 @@
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\bin\Debug\ElectraGenerator.exe.config
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\bin\Debug\ElectraGenerator.exe
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\bin\Debug\ElectraGenerator.pdb
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\obj\Debug\ElectraGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\obj\Debug\ElectraGenerator.exe
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\obj\Debug\ElectraGenerator.pdb
+C:\Users\Ilya Axenov\source\repos\ElectraGenerator\ElectraGenerator\obj\Debug\ElectraGenerator.csprojAssemblyReference.cache
