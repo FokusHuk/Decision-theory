@@ -1,0 +1,7 @@
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\bin\Debug\SimplexGenerator.exe.config
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\bin\Debug\SimplexGenerator.exe
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\bin\Debug\SimplexGenerator.pdb
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\obj\Debug\SimplexGenerator.csprojAssemblyReference.cache
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\obj\Debug\SimplexGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\obj\Debug\SimplexGenerator.exe
+C:\Users\Ilya Axenov\source\repos\SimplexGenerator\SimplexGenerator\obj\Debug\SimplexGenerator.pdb
