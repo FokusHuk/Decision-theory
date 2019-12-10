@@ -1,0 +1,7 @@
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\bin\Debug\ParetoGenerator.exe.config
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\bin\Debug\ParetoGenerator.exe
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\bin\Debug\ParetoGenerator.pdb
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\obj\Debug\ParetoGenerator.csprojAssemblyReference.cache
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\obj\Debug\ParetoGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\obj\Debug\ParetoGenerator.exe
+C:\Users\Ilya Axenov\source\repos\ParetoGenerator\ParetoGenerator\obj\Debug\ParetoGenerator.pdb
