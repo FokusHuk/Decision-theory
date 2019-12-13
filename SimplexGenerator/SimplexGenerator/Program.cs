@@ -19,6 +19,11 @@ namespace SimplexGenerator
         static List<double> Delta = new List<double>();
         static int Iteration = -1;
 
+        // Для двойственной задачи
+        static List<int> StartFactors = new List<int>(); // первоначальные значения при x
+        static double[,] StartXTable; // значения ограничений
+
+
         static void Main(string[] args)
         {
             Init();
@@ -32,6 +37,8 @@ namespace SimplexGenerator
                 CreateNewTable();
                 ShowSimplexTable();
             }
+
+            InverseMethod();
 
             Console.ReadLine();
         }
@@ -97,6 +104,9 @@ namespace SimplexGenerator
                 XVars.Add("x" + (Y + i));
 
             reader.Close();
+
+            StartFactors = Factors;
+            StartXTable = XTable;
         }
         
         static void ShowState()
@@ -268,6 +278,165 @@ namespace SimplexGenerator
             for (int j = 0; j < X; j++)
             {
                 Delta[Y - 1] += XTable[j, Y - 1] * Factors[FactorNames.IndexOf(XVars[j])];
+            }
+        }
+
+
+        static void InverseMethod()
+        {
+            Console.WriteLine("\nДвойственная задача. Первая теорема.\n");
+
+            double[,] TransXTable = new double[Y - 1, X];
+            double[,] Dmatrix = new double[X, X];
+            double[,] ReverseMatrix = new double[X, X];
+            double[] Yfinal = new double[X];
+
+            Console.Write("g(y) = ");
+            for (int i = 0; i < X; i ++)
+            {
+                if (i == X - 1)
+                    Console.WriteLine(StartXTable[i, Y - 1] + "y" + (i + 1) + "\n");
+                else
+                    Console.Write(StartXTable[i, Y - 1] + "y" + (i + 1) + " + ");
+            }
+
+            // Транспонирование матрицы
+            for (int i = 0; i < Y - 1; i++)
+                for (int j = 0; j < X; j++)
+                    TransXTable[i, j] = StartXTable[j, i];
+
+            // Ограничения двойственной функции
+            for (int i = 0; i < Y - 1; i++)
+            {
+                for (int j = 0; j < X; j++)
+                {
+                    if (j == X - 1)
+                        Console.Write(TransXTable[i, j] + "y" + (j + 1));
+                    else
+                        Console.Write(TransXTable[i, j] + "y" + (j + 1) + " + ");
+                }
+                Console.WriteLine(" > " + StartFactors[i]);
+            }
+
+            // Составление D-матрицы
+            for (int i = 0; i < X; i ++)
+            {
+                int index = FactorNames.IndexOf(XVars[i]);
+
+                if (index < X)
+                {
+                    for (int j = 0; j < X; j++)
+                        Dmatrix[j, i] = StartXTable[j, index];
+                }   
+                else
+                {
+                    index = Convert.ToInt32(XVars[i].Substring(1)) - Y;
+
+                    for (int j = 0; j < X; j ++)
+                    {
+                        if (j != index)
+                            Dmatrix[j, i] = 0;
+                        else
+                            Dmatrix[j, i] = 1;
+                    }
+                }
+            }
+
+            // Вычисление обратной матрицы
+            double det = GetMatrixDeterminant(Dmatrix, X, -1, -1);
+
+            if (det != 0)
+            {
+                double[,] TransDmatrix = new double[X, X];
+
+                for (int i = 0; i < X; i++)
+                    for (int j = 0; j < X; j++)
+                        TransDmatrix[i, j] = Dmatrix[j, i];      
+
+                for (int i = 0; i < X; i++)
+                    for (int j = 0; j < X; j++)
+                    {
+                        ReverseMatrix[i, j] = (Math.Pow(-1, i + j) * GetMatrixDeterminant(TransDmatrix, X, i, j)) / det;
+                    }
+
+                Console.WriteLine("\nОбратная матрица D:");
+                for (int i = 0; i < X; i++)
+                {
+                    for (int j = 0; j < X; j++)
+                        Console.Write(Math.Round(ReverseMatrix[i, j], 2) + "\t");
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < X; i++)
+                Yfinal[i] = 0;
+
+            for (int i = 0; i < X; i++)
+                for (int j = 0; j < X; j++)
+                {
+                    Yfinal[i] += Factors[FactorNames.IndexOf(XVars[j])] * ReverseMatrix[j, i];
+                }
+
+            Console.WriteLine("\nЗапасы ресурсов:");
+            for (int i = 0; i < X; i++)
+                Console.WriteLine(Math.Round(Yfinal[i], 2) + " ");
+
+            Console.Write("\nМинимальное значения целевой функции двойственной задачи: ");
+            double result = 0;
+            for (int i = 0; i < X; i ++)
+            {
+                result += StartXTable[i, Y - 1] * Yfinal[i];
+            }
+            Console.WriteLine(Math.Round(result, 1));
+        }
+
+        static double GetMatrixDeterminant(double[,] dm, int size, int x, int y)
+        {
+            if (x != - 1)
+            {
+                double[,] newdm = new double[size - 1, size - 1];
+
+                int ii = 0, jj = 0;
+                for (int i = 0; i < size; i++)
+                {
+                    if (i == x) continue;
+                    for (int j = 0; j < size; j++)
+                    {
+                        if (j == y) continue;
+                        newdm[ii, jj] = dm[i, j];
+                        jj++;
+                    }
+                    ii++;
+                    jj = 0;
+                }
+
+                return GetMatrixDeterminant(newdm, size - 1, -1, -1);
+            }
+            else if (size == 2)
+            {
+                return dm[0, 0] * dm[1, 1] - dm[1, 0] * dm[0, 1];
+            }
+            else if (size == 3)
+            {
+                return dm[0, 0] * dm[1, 1] * dm[2, 2] + dm[1, 0] * dm[2, 1] * dm[0, 2] + dm[0, 1] * dm[1, 2] * dm[2, 0] -
+                    dm[0, 2] * dm[1, 1] * dm[2, 0] - dm[2, 1] * dm[1, 2] * dm[0, 0] - dm[1, 0] * dm[0, 1] * dm[2, 2];
+            }
+            else
+            {
+                double det = 0.0;
+                int line = 0;
+                for (int i = 0; i < size; i ++)
+                    for (int j = 0; j < size; j ++)
+                        if (dm[i, j] != 0)
+                        {
+                            line = i;
+                            break;
+                        }
+                for (int j = 0; j < size; j++)
+                    det += dm[line, j] * Math.Pow(-1, j + line) * GetMatrixDeterminant(dm, size, line, j);
+
+                return det;
             }
         }
     }
