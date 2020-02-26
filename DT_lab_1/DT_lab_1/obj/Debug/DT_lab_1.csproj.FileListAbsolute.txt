@@ -1,0 +1,7 @@
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\bin\Debug\DT_lab_1.exe.config
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\bin\Debug\DT_lab_1.exe
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\bin\Debug\DT_lab_1.pdb
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\obj\Debug\DT_lab_1.csprojAssemblyReference.cache
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\obj\Debug\DT_lab_1.csproj.CoreCompileInputs.cache
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\obj\Debug\DT_lab_1.exe
+C:\Users\Ilya Axenov\source\repos\DT_lab_1\DT_lab_1\obj\Debug\DT_lab_1.pdb
